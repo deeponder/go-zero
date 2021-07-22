@@ -4,15 +4,15 @@ import (
 	"fmt"
 
 	"github.com/logrusorgru/aurora"
-	"github.com/tal-tech/go-zero/core/errorx"
-	"github.com/tal-tech/go-zero/tools/goctl/api/gogen"
-	"github.com/tal-tech/go-zero/tools/goctl/docker"
-	"github.com/tal-tech/go-zero/tools/goctl/kube"
-	mongogen "github.com/tal-tech/go-zero/tools/goctl/model/mongo/generate"
-	modelgen "github.com/tal-tech/go-zero/tools/goctl/model/sql/gen"
-	rpcgen "github.com/tal-tech/go-zero/tools/goctl/rpc/generator"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/errorx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/gogen"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/docker"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/kube"
+	mongogen "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/mongo/generate"
+	modelgen "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/gen"
+	rpcgen "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/generator"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 const templateParentPath = "/"

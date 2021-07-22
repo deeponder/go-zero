@@ -7,13 +7,13 @@ import (
 	"time"
 
 	"github.com/justinas/alice"
-	"github.com/tal-tech/go-zero/core/codec"
-	"github.com/tal-tech/go-zero/core/load"
-	"github.com/tal-tech/go-zero/core/stat"
-	"github.com/tal-tech/go-zero/rest/handler"
-	"github.com/tal-tech/go-zero/rest/httpx"
-	"github.com/tal-tech/go-zero/rest/internal"
-	"github.com/tal-tech/go-zero/rest/router"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/codec"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/load"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/handler"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/httpx"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/internal"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/router"
 )
 
 // use 1000m to represent 100%

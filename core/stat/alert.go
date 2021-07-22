@@ -10,11 +10,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/executors"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/proc"
-	"github.com/tal-tech/go-zero/core/sysx"
-	"github.com/tal-tech/go-zero/core/timex"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/executors"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/proc"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/sysx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/timex"
 )
 
 const (

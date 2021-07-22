@@ -4,7 +4,7 @@ import (
 	"io"
 	"sync"
 
-	"github.com/tal-tech/go-zero/core/errorx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/errorx"
 )
 
 // A ResourceManager is a manager that used to manage resources.

@@ -6,9 +6,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/tal-tech/go-zero/core/search"
-	"github.com/tal-tech/go-zero/rest/httpx"
-	"github.com/tal-tech/go-zero/rest/internal/context"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/search"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/httpx"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/internal/context"
 )
 
 const (

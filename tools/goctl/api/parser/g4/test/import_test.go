@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/tools/goctl/api/parser/g4/ast"
-	"github.com/tal-tech/go-zero/tools/goctl/api/parser/g4/gen/api"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/parser/g4/ast"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/parser/g4/gen/api"
 )
 
 var importAccept = func(p *api.ApiParserParser, visitor *ast.ApiVisitor) interface{} {

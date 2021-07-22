@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/fs"
-	"github.com/tal-tech/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/fs"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
 )
 
 func TestReadText(t *testing.T) {

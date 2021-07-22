@@ -5,9 +5,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/stat/internal"
-	"github.com/tal-tech/go-zero/core/threading"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat/internal"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/threading"
 )
 
 const (

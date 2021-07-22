@@ -3,7 +3,7 @@ package load
 import (
 	"io"
 
-	"github.com/tal-tech/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
 )
 
 // A ShedderGroup is a manager to manage key based shedders.

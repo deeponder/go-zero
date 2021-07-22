@@ -3,10 +3,10 @@ package service
 import (
 	"log"
 
-	"github.com/tal-tech/go-zero/core/load"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/prometheus"
-	"github.com/tal-tech/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/load"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/prometheus"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
 )
 
 const (

@@ -9,11 +9,11 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/tal-tech/go-zero/core/collection"
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	"github.com/tal-tech/go-zero/tools/goctl/api/util"
-	ctlutil "github.com/tal-tech/go-zero/tools/goctl/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/ctx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/collection"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/util"
+	ctlutil "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/ctx"
 )
 
 type fileGenConfig struct {

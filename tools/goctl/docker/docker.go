@@ -10,9 +10,9 @@ import (
 	"time"
 
 	"github.com/logrusorgru/aurora"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
-	ctlutil "github.com/tal-tech/go-zero/tools/goctl/util"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	ctlutil "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 const (

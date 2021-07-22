@@ -8,9 +8,9 @@ import (
 	"path"
 	"strings"
 
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 // MaybeCreateFile creates file if not exists

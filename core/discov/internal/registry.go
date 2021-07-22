@@ -9,11 +9,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/contextx"
-	"github.com/tal-tech/go-zero/core/lang"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/syncx"
-	"github.com/tal-tech/go-zero/core/threading"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/contextx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/lang"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/threading"
 	clientv3 "go.etcd.io/etcd/client/v3"
 )
 

@@ -10,9 +10,9 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/jsonx"
-	"github.com/tal-tech/go-zero/core/lang"
-	"github.com/tal-tech/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/jsonx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/lang"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
 )
 
 const (

@@ -4,12 +4,12 @@ import (
 	"log"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/load"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/stat"
-	"github.com/tal-tech/go-zero/zrpc/internal"
-	"github.com/tal-tech/go-zero/zrpc/internal/auth"
-	"github.com/tal-tech/go-zero/zrpc/internal/serverinterceptors"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/load"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal"
+	"gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal/auth"
+	"gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal/serverinterceptors"
 	"google.golang.org/grpc"
 )
 

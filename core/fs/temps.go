@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/tal-tech/go-zero/core/hash"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/hash"
 )
 
 // TempFileWithText creates the temporary file with the given content,

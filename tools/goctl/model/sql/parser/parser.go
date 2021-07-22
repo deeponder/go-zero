@@ -5,13 +5,13 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/tal-tech/go-zero/core/collection"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/converter"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/model"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/console"
-	"github.com/tal-tech/go-zero/tools/goctl/util/stringx"
 	"github.com/xwb1989/sqlparser"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/collection"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/converter"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/model"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/console"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/stringx"
 )
 
 const timeImport = "time.Time"

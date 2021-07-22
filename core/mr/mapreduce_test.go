@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
 )
 
 var errDummy = errors.New("dummy")

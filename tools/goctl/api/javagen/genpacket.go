@@ -6,10 +6,10 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	apiutil "github.com/tal-tech/go-zero/tools/goctl/api/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	apiutil "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 const packetTemplate = `package com.xhb.logic.http.packet.{{.packet}};

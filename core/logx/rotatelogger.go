@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/fs"
-	"github.com/tal-tech/go-zero/core/lang"
-	"github.com/tal-tech/go-zero/core/timex"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/fs"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/lang"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/timex"
 )
 
 const (

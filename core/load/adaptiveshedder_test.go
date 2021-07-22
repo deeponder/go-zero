@@ -8,11 +8,11 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/collection"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/mathx"
-	"github.com/tal-tech/go-zero/core/stat"
-	"github.com/tal-tech/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/collection"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/mathx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
 )
 
 const (

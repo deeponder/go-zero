@@ -65,8 +65,8 @@ type User struct {
       "context"
   
       "github.com/globalsign/mgo/bson"
-      cachec "github.com/tal-tech/go-zero/core/stores/cache"
-      "github.com/tal-tech/go-zero/core/stores/mongoc"
+      cachec "gitlab.deepwisdomai.com/infra/go-zero/core/stores/cache"
+      "gitlab.deepwisdomai.com/infra/go-zero/core/stores/mongoc"
   )
   
   type UserModel interface {
@@ -196,13 +196,14 @@ OPTIONS:
    --type value, -t value  specified model type name
    --cache, -c             generate code with cache [optional]
    --dir value, -d value   the target dir
-   --style value           the file naming format, see [https://github.com/tal-tech/go-zero/tree/master/tools/goctl/config/readme.md]
+   --style value           the file naming format, see [https://gitlab.deepwisdomai.com/infra/go-zero/tree/master/tools/goctl/config/readme.md]
 
 ```
 
 > 温馨提示
-> 
+>
 > `--type` 支持slice传值，示例 `goctl model mongo -t=User -t=Class`
+
 ## 注意事项
 
 types.go本质上与xxxmodel.go无关，只是将type定义部分交给开发人员自己编写了，在xxxmodel.go中，mongo文档的存储结构必须包含

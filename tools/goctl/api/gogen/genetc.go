@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"strconv"
 
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	"github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/util/format"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/format"
 )
 
 const (

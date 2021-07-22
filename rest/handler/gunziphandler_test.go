@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/codec"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/codec"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/httpx"
 )
 
 func TestGunzipHandler(t *testing.T) {

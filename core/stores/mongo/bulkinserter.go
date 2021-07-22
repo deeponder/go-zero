@@ -4,8 +4,8 @@ import (
 	"time"
 
 	"github.com/globalsign/mgo"
-	"github.com/tal-tech/go-zero/core/executors"
-	"github.com/tal-tech/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/executors"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
 )
 
 const (

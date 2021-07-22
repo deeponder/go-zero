@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
 )
 
 const duration = time.Millisecond * 50

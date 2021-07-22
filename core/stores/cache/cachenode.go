@@ -7,12 +7,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/jsonx"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/mathx"
-	"github.com/tal-tech/go-zero/core/stat"
-	"github.com/tal-tech/go-zero/core/stores/redis"
-	"github.com/tal-tech/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/jsonx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/mathx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/redis"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
 )
 
 const (

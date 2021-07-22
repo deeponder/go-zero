@@ -3,11 +3,11 @@ package generator
 import (
 	"path/filepath"
 
-	conf "github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/parser"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/console"
-	"github.com/tal-tech/go-zero/tools/goctl/util/ctx"
+	conf "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/parser"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/console"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/ctx"
 )
 
 // RPCGenerator defines a generator and configure

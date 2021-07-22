@@ -9,10 +9,10 @@ import (
 
 	"github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stores/cache"
-	"github.com/tal-tech/go-zero/core/stores/redis"
-	"github.com/tal-tech/go-zero/core/stores/redis/redistest"
-	mocksql "github.com/tal-tech/go-zero/tools/goctl/model/sql/test"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/cache"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/redis"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/redis/redistest"
+	mocksql "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/test"
 )
 
 func TestStudentModel(t *testing.T) {

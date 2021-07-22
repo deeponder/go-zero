@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stat"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stat"
 )
 
 func TestWithMetrics(t *testing.T) {

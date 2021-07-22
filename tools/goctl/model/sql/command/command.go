@@ -7,14 +7,14 @@ import (
 	"strings"
 
 	"github.com/go-sql-driver/mysql"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/gen"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/model"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/console"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/sqlx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/gen"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/model"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/console"
 )
 
 const (

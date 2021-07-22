@@ -4,11 +4,11 @@
 
 [English](readme.md) | 简体中文
 
-[![Go](https://github.com/tal-tech/go-zero/workflows/Go/badge.svg?branch=master)](https://github.com/tal-tech/go-zero/actions)
-[![Go Report Card](https://goreportcard.com/badge/github.com/tal-tech/go-zero)](https://goreportcard.com/report/github.com/tal-tech/go-zero)
-[![goproxy](https://goproxy.cn/stats/github.com/tal-tech/go-zero/badges/download-count.svg)](https://goproxy.cn/stats/github.com/tal-tech/go-zero/badges/download-count.svg)
+[![Go](https://gitlab.deepwisdomai.com/infra/go-zero/workflows/Go/badge.svg?branch=master)](https://gitlab.deepwisdomai.com/infra/go-zero/actions)
+[![Go Report Card](https://goreportcard.com/badge/gitlab.deepwisdomai.com/infra/go-zero)](https://goreportcard.com/report/gitlab.deepwisdomai.com/infra/go-zero)
+[![goproxy](https://goproxy.cn/stats/gitlab.deepwisdomai.com/infra/go-zero/badges/download-count.svg)](https://goproxy.cn/stats/gitlab.deepwisdomai.com/infra/go-zero/badges/download-count.svg)
 [![codecov](https://codecov.io/gh/tal-tech/go-zero/branch/master/graph/badge.svg)](https://codecov.io/gh/tal-tech/go-zero)
-[![Release](https://img.shields.io/github/v/release/tal-tech/go-zero.svg?style=flat-square)](https://github.com/tal-tech/go-zero)
+[![Release](https://img.shields.io/github/v/release/tal-tech/go-zero.svg?style=flat-square)](https://gitlab.deepwisdomai.com/infra/go-zero)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## 0. go-zero 介绍
@@ -33,15 +33,15 @@ go-zero 包含极简的 API 定义和生成工具 goctl，可以根据定义的 
 18 年初，我们决定从 `Java+MongoDB` 的单体架构迁移到微服务架构，经过仔细思考和对比，我们决定：
 
 * 基于 Go 语言
-  * 高效的性能
-  * 简洁的语法
-  * 广泛验证的工程效率
-  * 极致的部署体验
-  * 极低的服务端资源成本
+    * 高效的性能
+    * 简洁的语法
+    * 广泛验证的工程效率
+    * 极致的部署体验
+    * 极低的服务端资源成本
 * 自研微服务框架
-  * 有过很多微服务框架自研经验
-  * 需要有更快速的问题定位能力
-  * 更便捷的增加新特性
+    * 有过很多微服务框架自研经验
+    * 需要有更快速的问题定位能力
+    * 更便捷的增加新特性
 
 ## 2. go-zero 框架设计思考
 
@@ -87,26 +87,27 @@ go-zero 是一个集成了各种工程实践的包含 web 和 rpc 框架，有�
 在项目目录下通过如下命令安装：
 
 ```shell
-GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero
+GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u gitlab.deepwisdomai.com/infra/go-zero
 ```
 
 ## 5. Quick Start
 
 0. 完整示例请查看
 
-    [快速构建高并发微服务](https://github.com/tal-tech/zero-doc/blob/main/doc/shorturl.md)
+   [快速构建高并发微服务](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/doc/shorturl.md)
 
-    [快速构建高并发微服务 - 多 RPC 版](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
+   [快速构建高并发微服务 - 多 RPC 版](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/docs/zero/bookstore.md)
 
 1. 安装 goctl 工具
 
-    `goctl` 读作 `go control`，不要读成 `go C-T-L`。`goctl` 的意思是不要被代码控制，而是要去控制它。其中的 `go` 不是指 `golang`。在设计 `goctl` 之初，我就希望通过 ` 她 ` 来解放我们的双手👈
+   `goctl` 读作 `go control`，不要读成 `go C-T-L`。`goctl` 的意思是不要被代码控制，而是要去控制它。其中的 `go` 不是指 `golang`。在设计 `goctl` 之初，我就希望通过 ` 她 `
+   来解放我们的双手👈
 
     ```shell
-    GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/go-zero/tools/goctl
+    GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u gitlab.deepwisdomai.com/infra/go-zero/tools/goctl
     ```
 
-    确保 goctl 可执行
+   确保 goctl 可执行
 
 2. 快速生成 api 服务
 
@@ -118,13 +119,13 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
     go run greet.go -f etc/greet-api.yaml
     ```
 
-    默认侦听在 8888 端口（可以在配置文件里修改），可以通过 curl 请求：
+   默认侦听在 8888 端口（可以在配置文件里修改），可以通过 curl 请求：
 
     ```shell
     curl -i http://localhost:8888/from/you
     ```
 
-    返回如下：
+   返回如下：
 
     ```http
     HTTP/1.1 200 OK
@@ -135,11 +136,11 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 	{"message":""}
     ```
 
-    编写业务代码：
+   编写业务代码：
 
-      * api 文件定义了服务对外暴露的路由，可参考 [api 规范](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
-      * 可以在 servicecontext.go 里面传递依赖给 logic，比如 mysql, redis 等
-      * 在 api 定义的 get/post/put/delete 等请求对应的 logic 里增加业务处理逻辑
+    * api 文件定义了服务对外暴露的路由，可参考 [api 规范](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/doc/goctl.md)
+    * 可以在 servicecontext.go 里面传递依赖给 logic，比如 mysql, redis 等
+    * 在 api 定义的 get/post/put/delete 等请求对应的 logic 里增加业务处理逻辑
 
 3. 可以根据 api 文件生成前端需要的 Java, TypeScript, Dart, JavaScript 代码
 
@@ -163,24 +164,24 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 
 * 常见问题
 
-  * 因为 `etcd` 和 `grpc` 兼容性问题，请使用 `grpc@v1.29.1`
+    * 因为 `etcd` 和 `grpc` 兼容性问题，请使用 `grpc@v1.29.1`
 
-    `google.golang.org/grpc v1.29.1`
+      `google.golang.org/grpc v1.29.1`
 
-  * 因为 `protobuf` 兼容性问题，请使用 `protocol-gen@v1.3.2`
+    * 因为 `protobuf` 兼容性问题，请使用 `protocol-gen@v1.3.2`
 
-    `go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2`
+      `go get -u github.com/golang/protobuf/protoc-gen-go@v1.3.2`
 
 * awesome 系列（更多文章见『微服务实践』公众号）
-  * [快速构建高并发微服务](https://github.com/tal-tech/zero-doc/blob/main/doc/shorturl.md)
-  * [快速构建高并发微服务 - 多 RPC 版](https://github.com/tal-tech/zero-doc/blob/main/docs/zero/bookstore.md)
-  * [goctl 使用帮助](https://github.com/tal-tech/zero-doc/blob/main/doc/goctl.md)
-  * [Examples](https://github.com/zeromicro/zero-examples)
-  
+    * [快速构建高并发微服务](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/doc/shorturl.md)
+    * [快速构建高并发微服务 - 多 RPC 版](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/docs/zero/bookstore.md)
+    * [goctl 使用帮助](https://gitlab.deepwisdomai.com/infra/zero-doc/blob/main/doc/goctl.md)
+    * [Examples](https://github.com/zeromicro/zero-examples)
+
 * 精选 `goctl` 插件
 
   | 插件    | 用途  |
-  | ------------- |:-------------|
+    | ------------- |:-------------|
   | [goctl-swagger](https://github.com/zeromicro/goctl-swagger) | 一键生成 `api` 的 `swagger` 文档 |
   | [goctl-android](https://github.com/zeromicro/goctl-android) | 生成 `java (android)` 端 `http client` 请求代码 |
   | [goctl-go-compact](https://github.com/zeromicro/goctl-go-compact) | 合并 `api` 里同一个 `group` 里的 `handler` 到一个 `go` 文件 |
@@ -189,7 +190,7 @@ GO111MODULE=on GOPROXY=https://goproxy.cn/,direct go get -u github.com/tal-tech/
 
 go-zero 已被许多公司用于生产部署，接入场景如在线教育、电商业务、游戏、区块链等，目前为止，已使用 go-zero 的公司包括但不限于：
 
->1. 好未来
+> 1. 好未来
 >2. 上海晓信信息科技有限公司（晓黑板）
 >3. 上海玉数科技有限公司
 >4. 常州千帆网络科技有限公司
@@ -225,7 +226,7 @@ go-zero 已被许多公司用于生产部署，接入场景如在线教育、电
 >34. 南宁宸升计算机科技有限公司
 >35. 秦皇岛2084team
 
-如果贵公司也已使用 go-zero，欢迎在 [登记地址](https://github.com/tal-tech/go-zero/issues/602) 登记，仅仅为了推广，不做其它用途。
+如果贵公司也已使用 go-zero，欢迎在 [登记地址](https://gitlab.deepwisdomai.com/infra/go-zero/issues/602) 登记，仅仅为了推广，不做其它用途。
 
 ## 9. 微信公众号
 

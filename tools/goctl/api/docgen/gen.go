@@ -7,9 +7,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/tal-tech/go-zero/tools/goctl/api/parser"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/parser"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 // DocCommand generate markdown doc file

@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/model/mongo/generate"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/mongo/generate"
 )
 
 // Action provides the entry for goctl mongo code generation.

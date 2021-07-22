@@ -10,8 +10,8 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/rest/httpx"
-	"github.com/tal-tech/go-zero/rest/internal/context"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/httpx"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/internal/context"
 )
 
 const (

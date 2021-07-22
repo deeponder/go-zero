@@ -7,9 +7,9 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/execx"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/execx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 func TestIsGoMod(t *testing.T) {

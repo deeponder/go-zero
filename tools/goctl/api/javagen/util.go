@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
 )
 
 func writeProperty(writer io.Writer, member spec.Member, indent int) error {

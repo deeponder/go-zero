@@ -3,7 +3,7 @@ package rest
 import (
 	"time"
 
-	"github.com/tal-tech/go-zero/core/service"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/service"
 )
 
 type (

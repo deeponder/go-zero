@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/executors"
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/executors"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
 )
 
 const (

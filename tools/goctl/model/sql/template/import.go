@@ -8,11 +8,11 @@ var (
 	"strings"
 	{{if .time}}"time"{{end}}
 
-	"github.com/tal-tech/go-zero/core/stores/cache"
-	"github.com/tal-tech/go-zero/core/stores/sqlc"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/cache"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/sqlc"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/sqlx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/builderx"
 )
 `
 	// ImportsNoCache defines a import template for model in normal case
@@ -22,10 +22,10 @@ var (
 	"strings"
 	{{if .time}}"time"{{end}}
 
-	"github.com/tal-tech/go-zero/core/stores/sqlc"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/sqlc"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/sqlx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/model/sql/builderx"
 )
 `
 )

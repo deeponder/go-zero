@@ -1,8 +1,8 @@
 package generator
 
 import (
-	conf "github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/parser"
+	conf "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/parser"
 )
 
 // Generator defines a generator interface to describe how to generate rpc service

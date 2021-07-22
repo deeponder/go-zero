@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/codec"
-	"github.com/tal-tech/go-zero/core/fs"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/codec"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/fs"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/httpx"
 )
 
 const (

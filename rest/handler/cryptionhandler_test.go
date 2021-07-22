@@ -10,7 +10,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/codec"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/codec"
 )
 
 const (

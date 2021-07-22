@@ -5,11 +5,11 @@ import (
 	"path"
 	"strings"
 
-	"github.com/tal-tech/go-zero/tools/goctl/api/spec"
-	"github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/format"
-	"github.com/tal-tech/go-zero/tools/goctl/vars"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/spec"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/format"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/vars"
 )
 
 const handlerTemplate = `package handler

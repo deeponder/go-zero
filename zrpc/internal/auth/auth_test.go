@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/stores/redis/redistest"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/stores/redis/redistest"
 	"google.golang.org/grpc/metadata"
 )
 

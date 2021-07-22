@@ -4,7 +4,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
 )
 
 const statInterval = time.Minute

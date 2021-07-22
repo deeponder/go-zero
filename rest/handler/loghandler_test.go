@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/rest/internal"
+	"gitlab.deepwisdomai.com/infra/go-zero/rest/internal"
 )
 
 func init() {

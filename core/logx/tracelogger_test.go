@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/trace/tracespec"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/trace/tracespec"
 )
 
 const (

@@ -3,7 +3,7 @@ package contextx
 import (
 	"context"
 
-	"github.com/tal-tech/go-zero/core/mapping"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/mapping"
 )
 
 const contextTagKey = "ctx"

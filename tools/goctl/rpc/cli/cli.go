@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/generator"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/generator"
 )
 
 // RPC is to generate rpc service code from a proto file by specifying a proto file using flag src,

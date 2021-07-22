@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/tal-tech/go-zero/core/proc"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/proc"
 )
 
 // StartHttp starts a http server.

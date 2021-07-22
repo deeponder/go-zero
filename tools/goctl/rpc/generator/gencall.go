@@ -5,12 +5,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/tal-tech/go-zero/core/collection"
-	conf "github.com/tal-tech/go-zero/tools/goctl/config"
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/parser"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/format"
-	"github.com/tal-tech/go-zero/tools/goctl/util/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/collection"
+	conf "gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/config"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/parser"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/format"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/stringx"
 )
 
 const (
@@ -25,7 +25,7 @@ import (
 
 	{{.package}}
 
-	"github.com/tal-tech/go-zero/zrpc"
+	"gitlab.deepwisdomai.com/infra/go-zero/zrpc"
 )
 
 type (

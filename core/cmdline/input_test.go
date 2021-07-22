@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"github.com/tal-tech/go-zero/core/iox"
-	"github.com/tal-tech/go-zero/core/lang"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/iox"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/lang"
 )
 
 func TestEnterToContinue(t *testing.T) {

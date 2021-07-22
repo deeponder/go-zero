@@ -1,6 +1,7 @@
 # Rpc Generation
 
-Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持proto模板生成和rpc服务代码生成，通过此工具生成代码你只需要关注业务逻辑编写而不用去编写一些重复性的代码。这使得我们把精力重心放在业务上，从而加快了开发效率且降低了代码出错率。
+Goctl Rpc是`goctl`
+脚手架下的一个rpc服务代码生成模块，支持proto模板生成和rpc服务代码生成，通过此工具生成代码你只需要关注业务逻辑编写而不用去编写一些重复性的代码。这使得我们把精力重心放在业务上，从而加快了开发效率且降低了代码出错率。
 
 ## 特性
 
@@ -9,20 +10,19 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
 * 出错率低
 * 贴近protoc
 
-
 ## 快速开始
 
 ### 方式一：快速生成greet服务
 
-  通过命令 `goctl rpc new ${servieName}`生成
+通过命令 `goctl rpc new ${servieName}`生成
 
-  如生成greet rpc服务：
+如生成greet rpc服务：
 
   ```Bash
   goctl rpc new greet
   ```
 
-  执行后代码结构如下:
+执行后代码结构如下:
 
   ```golang
 .
@@ -59,6 +59,7 @@ Goctl Rpc是`goctl`脚手架下的一个rpc服务代码生成模块，支持prot
   ret.PbPackage = GoSanitized(filepath.Base(ret.GoPackage))
   ...
 ```
+
 > GoSanitized方法请参考google.golang.org/protobuf@v1.25.0/internal/strs/strings.go:71
 
 > ② call 层文件夹名称取自于proto中service的名称，如该sercice的名称和pb文件夹名称相等，则会在srervice后面补充client进行区分，使pb和call分隔。
@@ -141,10 +142,10 @@ OPTIONS:
 ### 参数说明
 
 * --src 必填，proto数据源，目前暂时支持单个proto文件生成
-* --proto_path 可选，protoc原生子命令，用于指定proto import从何处查找，可指定多个路径,如`goctl rpc -I={path1} -I={path2} ...`,在没有import时可不填。当前proto路径不用指定，已经内置，`-I`的详细用法请参考`protoc -h`
+* --proto_path 可选，protoc原生子命令，用于指定proto import从何处查找，可指定多个路径,如`goctl rpc -I={path1} -I={path2} ...`
+  ,在没有import时可不填。当前proto路径不用指定，已经内置，`-I`的详细用法请参考`protoc -h`
 * --dir 可选，默认为proto文件所在目录，生成代码的目标目录
 * --idea 可选，是否为idea插件中执行，终端执行可以忽略
-
 
 ### 开发人员需要做什么
 
@@ -154,11 +155,11 @@ OPTIONS:
 * 服务中业务逻辑编写(internal/logic/xxlogic.go)
 * 服务中资源上下文的编写(internal/svc/servicecontext.go)
 
-
 ### 注意事项
 
-* `google.golang.org/grpc`需要降级到 `v1.29.1`，且protoc-gen-go版本不能高于v1.3.2（see [https://github.com/grpc/grpc-go/issues/3347](https://github.com/grpc/grpc-go/issues/3347)）即
-  
+* `google.golang.org/grpc`需要降级到 `v1.29.1`
+  ，且protoc-gen-go版本不能高于v1.3.2（see [https://github.com/grpc/grpc-go/issues/3347](https://github.com/grpc/grpc-go/issues/3347)）即
+
   ```shell script
   replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
   ```
@@ -175,11 +176,13 @@ OPTIONS:
 的标识，请注意不要将也写业务性代码写在里面。
 
 ## proto import
+
 * 对于rpc中的requestType和returnType必须在main proto文件定义，对于proto中的message可以像protoc一样import其他proto文件。
 
 proto示例:
 
 ### 错误import
+
 ```proto
 syntax = "proto3";
 
@@ -201,8 +204,8 @@ service Greet {
 
 ```
 
-
 ### 正确import
+
 ```proto
 syntax = "proto3";
 
@@ -248,18 +251,18 @@ service Greet {
     *rrBalanced does not implement Picker (wrong type for Pick method)
 		have Pick(context.Context, balancer.PickInfo) (balancer.SubConn, func(balancer.DoneInfo), error)
     want Pick(balancer.PickInfo) (balancer.PickResult, error)
-    #github.com/tal-tech/go-zero/zrpc/internal/balancer/p2c
-    ../../../go/pkg/mod/github.com/tal-tech/go-zero@v1.0.12/zrpc/internal/balancer/p2c/p2c.go:41:32: not enough arguments in call to base.NewBalancerBuilder
+    #gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal/balancer/p2c
+    ../../../go/pkg/mod/gitlab.deepwisdomai.com/infra/go-zero@v1.0.12/zrpc/internal/balancer/p2c/p2c.go:41:32: not enough arguments in call to base.NewBalancerBuilder
 	have (string, *p2cPickerBuilder)
   want (string, base.PickerBuilder, base.Config)
-  ../../../go/pkg/mod/github.com/tal-tech/go-zero@v1.0.12/zrpc/internal/balancer/p2c/p2c.go:58:9: cannot use &p2cPicker literal (type *p2cPicker) as type balancer.Picker in return argument:
+  ../../../go/pkg/mod/gitlab.deepwisdomai.com/infra/go-zero@v1.0.12/zrpc/internal/balancer/p2c/p2c.go:58:9: cannot use &p2cPicker literal (type *p2cPicker) as type balancer.Picker in return argument:
 	*p2cPicker does not implement balancer.Picker (wrong type for Pick method)
 		have Pick(context.Context, balancer.PickInfo) (balancer.SubConn, func(balancer.DoneInfo), error)
 		want Pick(balancer.PickInfo) (balancer.PickResult, error)
   ```
 
   解决方法：
-  
+
     ```golang
     replace google.golang.org/grpc => google.golang.org/grpc v1.29.1
     ```

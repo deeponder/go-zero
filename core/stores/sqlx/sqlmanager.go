@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/syncx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/syncx"
 )
 
 const (

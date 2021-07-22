@@ -4,8 +4,8 @@ import (
 	"errors"
 	"os"
 
-	"github.com/tal-tech/go-zero/core/jsonx"
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/execx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/jsonx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/execx"
 )
 
 // IsGoMod is used to determine whether workDir is a go module project through command `go list -json -m`

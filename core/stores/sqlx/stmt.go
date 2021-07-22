@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/logx"
-	"github.com/tal-tech/go-zero/core/timex"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/timex"
 )
 
 const slowThreshold = time.Millisecond * 500

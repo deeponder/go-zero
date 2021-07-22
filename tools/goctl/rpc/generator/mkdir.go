@@ -4,10 +4,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/tal-tech/go-zero/tools/goctl/rpc/parser"
-	"github.com/tal-tech/go-zero/tools/goctl/util"
-	"github.com/tal-tech/go-zero/tools/goctl/util/ctx"
-	"github.com/tal-tech/go-zero/tools/goctl/util/stringx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/rpc/parser"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/ctx"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/util/stringx"
 )
 
 const (

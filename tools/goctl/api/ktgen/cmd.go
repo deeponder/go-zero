@@ -3,8 +3,8 @@ package ktgen
 import (
 	"errors"
 
-	"github.com/tal-tech/go-zero/tools/goctl/api/parser"
 	"github.com/urfave/cli"
+	"gitlab.deepwisdomai.com/infra/go-zero/tools/goctl/api/parser"
 )
 
 // KtCommand the generate kotlin code command entrance
