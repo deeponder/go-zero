@@ -11,6 +11,9 @@ import (
 	"gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal/clientinterceptors"
 	"gitlab.deepwisdomai.com/infra/go-zero/zrpc/internal/resolver"
 	"google.golang.org/grpc"
+
+	"github.com/grpc-ecosystem/go-grpc-middleware/tracing/opentracing"
+	ot "github.com/opentracing/opentracing-go"
 )
 
 const (
@@ -74,6 +77,14 @@ func (c *client) buildDialOptions(opts ...ClientOption) []grpc.DialOption {
 			clientinterceptors.TimeoutInterceptor(cliOpts.Timeout),
 		),
 	}
+
+	// tracing
+	options = append(options, grpc.WithStreamInterceptor(
+		grpc_opentracing.StreamClientInterceptor(
+			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
+	options = append(options, grpc.WithUnaryInterceptor(
+		grpc_opentracing.UnaryClientInterceptor(
+			grpc_opentracing.WithTracer(ot.GlobalTracer()))))
 
 	return append(options, cliOpts.DialOptions...)
 }
