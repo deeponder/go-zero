@@ -20,6 +20,7 @@ package server
 
 import (
 	"context"
+	"google.golang.org/grpc/metadata"
 
 	{{.imports}}
 )
@@ -39,6 +40,10 @@ func New{{.server}}Server(svcCtx *svc.ServiceContext) *{{.server}}Server {
 	functionTemplate = `
 {{if .hasComment}}{{.comment}}{{end}}
 func (s *{{.server}}Server) {{.method}} (ctx context.Context, in {{.request}}) ({{.response}}, error) {
+	// tracing
+	headersIn, _ := metadata.FromIncomingContext(ctx)
+	ctx = metadata.NewOutgoingContext(ctx, headersIn)
+	
 	l := logic.New{{.logicName}}(ctx,s.svcCtx)
 	return l.{{.method}}(in)
 }

@@ -73,10 +73,10 @@ func (g *RPCGenerator) Generate(src, target string, protoImportPath []string) er
 		return err
 	}
 
-	err = g.g.GenPb(dirCtx, protoImportPath, proto, g.cfg)
-	if err != nil {
-		return err
-	}
+	//err = g.g.GenPb(dirCtx, protoImportPath, proto, g.cfg)
+	//if err != nil {
+	//	return err
+	//}
 
 	err = g.g.GenConfig(dirCtx, proto, g.cfg)
 	if err != nil {
@@ -103,7 +103,7 @@ func (g *RPCGenerator) Generate(src, target string, protoImportPath []string) er
 		return err
 	}
 
-	err = g.g.GenCall(dirCtx, proto, g.cfg)
+	//err = g.g.GenCall(dirCtx, proto, g.cfg)
 
 	console.NewColorConsole().MarkDone()
 

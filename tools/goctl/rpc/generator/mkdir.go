@@ -58,11 +58,11 @@ func mkdir(ctx *ctx.ProjectContext, proto parser.Proto) (DirContext, error) {
 	logicDir := filepath.Join(internalDir, "logic")
 	serverDir := filepath.Join(internalDir, "server")
 	svcDir := filepath.Join(internalDir, "svc")
-	pbDir := filepath.Join(ctx.WorkDir, proto.GoPackage)
-	callDir := filepath.Join(ctx.WorkDir, strings.ToLower(stringx.From(proto.Service.Name).ToCamel()))
-	if strings.ToLower(proto.Service.Name) == strings.ToLower(proto.GoPackage) {
-		callDir = filepath.Join(ctx.WorkDir, strings.ToLower(stringx.From(proto.Service.Name+"_client").ToCamel()))
-	}
+	//pbDir := filepath.Join(ctx.WorkDir, proto.GoPackage)
+	//callDir := filepath.Join(ctx.WorkDir, strings.ToLower(stringx.From(proto.Service.Name).ToCamel()))
+	//if strings.ToLower(proto.Service.Name) == strings.ToLower(proto.GoPackage) {
+	//	callDir = filepath.Join(ctx.WorkDir, strings.ToLower(stringx.From(proto.Service.Name+"_client").ToCamel()))
+	//}
 
 	inner[wd] = Dir{
 		Filename: ctx.WorkDir,
@@ -99,16 +99,16 @@ func mkdir(ctx *ctx.ProjectContext, proto parser.Proto) (DirContext, error) {
 		Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(svcDir, ctx.Dir))),
 		Base:     filepath.Base(svcDir),
 	}
-	inner[pb] = Dir{
-		Filename: pbDir,
-		Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(pbDir, ctx.Dir))),
-		Base:     filepath.Base(pbDir),
-	}
-	inner[call] = Dir{
-		Filename: callDir,
-		Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(callDir, ctx.Dir))),
-		Base:     filepath.Base(callDir),
-	}
+	//inner[pb] = Dir{
+	//	Filename: pbDir,
+	//	Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(pbDir, ctx.Dir))),
+	//	Base:     filepath.Base(pbDir),
+	//}
+	//inner[call] = Dir{
+	//	Filename: callDir,
+	//	Package:  filepath.ToSlash(filepath.Join(ctx.Path, strings.TrimPrefix(callDir, ctx.Dir))),
+	//	Base:     filepath.Base(callDir),
+	//}
 	for _, v := range inner {
 		err := util.MkdirIfNotExist(v.Filename)
 		if err != nil {
