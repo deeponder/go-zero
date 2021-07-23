@@ -73,10 +73,10 @@ func (g *RPCGenerator) Generate(src, target string, protoImportPath []string) er
 		return err
 	}
 
-	//err = g.g.GenPb(dirCtx, protoImportPath, proto, g.cfg)
-	//if err != nil {
-	//	return err
-	//}
+	err = g.g.GenPb(dirCtx, protoImportPath, proto, g.cfg)
+	if err != nil {
+		return err
+	}
 
 	err = g.g.GenConfig(dirCtx, proto, g.cfg)
 	if err != nil {
