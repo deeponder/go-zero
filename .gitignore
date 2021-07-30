@@ -17,8 +17,6 @@
 
 # IntelliJ project files
 .idea
-out
-gen
 
 # VsCode project files
 .vscode/*
@@ -29,4 +27,6 @@ gen
 log/*
 *.swp
 *.swo
+
+goctl
 
