@@ -88,7 +88,7 @@ func genErrs(dir string, cfg *config.Config, api *spec.ApiSpec) error {
 		templateName:    "errsTemplate",
 		category:        "",
 		templateFile:    "",
-		builtinTemplate: typesTemplate,
+		builtinTemplate: errsTemplate,
 		data: map[string]interface{}{
 			"imports": imports,
 		},
