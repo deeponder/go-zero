@@ -2,6 +2,7 @@ package httpx
 
 import (
 	"encoding/json"
+	"github.com/pkg/errors"
 	"net/http"
 	"sync"
 
@@ -12,6 +13,13 @@ var (
 	errorHandler func(error) (int, interface{})
 	lock         sync.RWMutex
 )
+
+// default render
+type DefaultRender struct {
+	ErrNo  int         `json:"errNo"`
+	ErrMsg string      `json:"errMsg"`
+	Data   interface{} `json:"data"`
+}
 
 // Error writes err into w.
 func Error(w http.ResponseWriter, err error) {
@@ -40,7 +48,28 @@ func Ok(w http.ResponseWriter) {
 
 // OkJson writes v into w with 200 OK.
 func OkJson(w http.ResponseWriter, v interface{}) {
-	WriteJson(w, http.StatusOK, v)
+	renderJson := DefaultRender{0, "succ", v}
+	WriteJson(w, http.StatusOK, renderJson)
+}
+
+func FailJson(w http.ResponseWriter, err error) {
+	var renderJson DefaultRender
+
+	switch errors.Cause(err).(type) {
+	case ErrorJson:
+		renderJson.ErrNo = errors.Cause(err).(ErrorJson).ErrNo
+		renderJson.ErrMsg = errors.Cause(err).(ErrorJson).ErrMsg
+		renderJson.Data = nil
+	default:
+		renderJson.ErrNo = -1
+		renderJson.ErrMsg = errors.Cause(err).Error()
+		renderJson.Data = nil
+	}
+	WriteJson(w, http.StatusOK, renderJson)
+
+	// 打印错误栈
+	//StackLogger(ctx, err)
+	return
 }
 
 // SetErrorHandler sets the error handler, which is called on calling Error.

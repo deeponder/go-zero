@@ -95,7 +95,20 @@ func TestOkJson(t *testing.T) {
 	msg := message{Name: "anyone"}
 	OkJson(&w, msg)
 	assert.Equal(t, http.StatusOK, w.code)
-	assert.Equal(t, "{\"name\":\"anyone\"}", w.builder.String())
+	assert.Equal(t, "{\"errNo\":0,\"errMsg\":\"succ\",\"data\":{\"name\":\"anyone\"}}", w.builder.String())
+}
+
+func TestFailJson(t *testing.T) {
+	w := tracedResponseWriter{
+		headers: make(map[string][]string),
+	}
+	var ErrorAuthCheck = ErrorJson{
+		ErrNo:  100,
+		ErrMsg: "check auth fail.",
+	}
+	FailJson(&w, ErrorAuthCheck)
+	assert.Equal(t, http.StatusOK, w.code)
+	assert.Equal(t, "{\"errNo\":100,\"errMsg\":\"check auth fail.\",\"data\":null}", w.builder.String())
 }
 
 func TestWriteJsonTimeout(t *testing.T) {
