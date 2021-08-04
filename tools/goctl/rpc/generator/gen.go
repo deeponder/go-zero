@@ -103,7 +103,7 @@ func (g *RPCGenerator) Generate(src, target string, protoImportPath []string) er
 		return err
 	}
 
-	//err = g.g.GenCall(dirCtx, proto, g.cfg)
+	err = g.g.GenCall(dirCtx, proto, g.cfg)
 
 	console.NewColorConsole().MarkDone()
 
