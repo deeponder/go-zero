@@ -16,6 +16,7 @@ const mainTemplate = `package main
 import (
 	"flag"
 	"fmt"
+	"os"
 
 	{{.importPackages}}
 )
@@ -26,6 +27,9 @@ func main() {
 	flag.Parse()
 
 	var c config.Config
+	if env := os.Getenv("ENV"); env != "" {
+		*configFile = "etc/{{.serviceName}}-" + env + ".yaml"
+	}
 	conf.MustLoad(*configFile, &c)
 
 	ctx := svc.NewServiceContext(c)

@@ -13,7 +13,7 @@ import (
 )
 
 const etcTemplate = `Name: {{.serviceName}}.rpc
-ListenOn: 127.0.0.1:8080
+ListenOn: 127.0.0.1:8090
 `
 
 // GenEtc generates the yaml configuration file of the rpc service,

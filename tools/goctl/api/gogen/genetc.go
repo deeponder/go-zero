@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	defaultPort = 8888
+	defaultPort = 8080
 	etcDir      = "etc"
 	etcTemplate = `Name: {{.serviceName}}
 Host: {{.host}}
