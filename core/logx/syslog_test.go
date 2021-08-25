@@ -25,7 +25,7 @@ func TestRedirector(t *testing.T) {
 	content := getContent(captureOutput(func() {
 		r.Write([]byte(testlog))
 	}))
-	assert.Equal(t, testlog, content)
+	assert.Equal(t, "syslog.go:13 "+testlog, content)
 }
 
 func captureOutput(f func()) string {

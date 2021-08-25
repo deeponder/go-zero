@@ -67,6 +67,18 @@ func TestFileLineFileMode(t *testing.T) {
 	file, line = getFileLine()
 	Errorf("anything %s", "format")
 	assert.True(t, writer.Contains(fmt.Sprintf("%s:%d", file, line+1)))
+
+	//	info
+	infoLog = writer
+	atomic.StoreUint32(&initialized, 1)
+	Info("anything")
+	assert.True(t, writer.Contains(fmt.Sprintf("%s:%d", file, line+1)))
+
+	writer.Reset()
+	file, line = getFileLine()
+	Infof("anything %s", "format")
+	assert.True(t, writer.Contains(fmt.Sprintf("%s:%d", file, line+1)))
+
 }
 
 func TestFileLineConsoleMode(t *testing.T) {

@@ -229,12 +229,22 @@ func ErrorStackf(format string, v ...interface{}) {
 
 // Info writes v into access log.
 func Info(v ...interface{}) {
-	infoSync(fmt.Sprint(v...))
+	InfoCaller(1, v...)
 }
 
 // Infof writes v with format into access log.
 func Infof(format string, v ...interface{}) {
-	infoSync(fmt.Sprintf(format, v...))
+	InfoCallerf(1, format, v...)
+}
+
+// InfoCallerf writes v with context in format into info log.
+func InfoCallerf(callDepth int, format string, v ...interface{}) {
+	infoSync(fmt.Sprintf(format, v...), callDepth+callerInnerDepth)
+}
+
+// InfoCaller writes v with context into info log.
+func InfoCaller(callDepth int, v ...interface{}) {
+	infoSync(fmt.Sprint(v...), callDepth+callerInnerDepth)
 }
 
 // Must checks if err is nil, otherwise logs the err and exits.
@@ -362,9 +372,9 @@ func handleOptions(opts []LogOption) {
 	}
 }
 
-func infoSync(msg string) {
+func infoSync(msg string, callDepth int) {
 	if shouldLog(InfoLevel) {
-		output(infoLog, levelInfo, msg)
+		outputInfo(infoLog, msg, callDepth)
 	}
 }
 
@@ -375,6 +385,11 @@ func output(writer io.Writer, level, msg string) {
 		Content:   msg,
 	}
 	outputJson(writer, info)
+}
+
+func outputInfo(writer io.Writer, msg string, callDepth int) {
+	content := formatWithCaller(msg, callDepth)
+	output(writer, levelInfo, content)
 }
 
 func outputError(writer io.Writer, msg string, callDepth int) {
