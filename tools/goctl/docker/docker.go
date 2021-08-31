@@ -41,6 +41,16 @@ func DockerCommand(c *cli.Context) (err error) {
 		}
 	}()
 
+	// 生成.gitlab-ci.yml
+	if err := generateGitlabCifile(); err != nil {
+		return err
+	}
+
+	// 生成.gitignore
+	if err := generateGitignore(); err != nil {
+		return err
+	}
+
 	goFile := c.String("go")
 	if len(goFile) == 0 {
 		return errors.New("-go can't be empty")
