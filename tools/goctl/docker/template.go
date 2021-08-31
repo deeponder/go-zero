@@ -6,17 +6,22 @@ import (
 )
 
 const (
-	category           = "docker"
-	dockerTemplateFile = "docker.tpl"
-	dockerTemplate     = `FROM golang:alpine AS builder
+	category              = "docker"
+	dockerTemplateFile    = "docker.tpl"
+	ciTemplateFile        = "ci.tpl"
+	gitIgnoreTemplateFile = "gitignore.tpl"
+	dockerTemplate        = `FROM ccr.deepwisdomai.com/infra/go-base-image/go-builder:1.0-alpine AS builder
 
 LABEL stage=gobuilder
 
+# go的环境变量
 ENV CGO_ENABLED 0
 ENV GOOS linux
-{{if .Chinese}}ENV GOPROXY https://goproxy.cn,direct
-{{end}}
-WORKDIR /build/zero
+ENV GOPROXY https://goproxy.cn,direct
+ENV GOPRIVATE *.deepwisdomai.com
+ENV GO111MODULE on
+
+WORKDIR /build/dw
 
 ADD go.mod .
 ADD go.sum .
@@ -26,7 +31,8 @@ COPY . .
 {{end}}RUN go build -ldflags="-s -w" -o /app/{{.ExeFile}} {{.GoRelPath}}/{{.GoFile}}
 
 
-FROM alpine
+FROM ccr.deepwisdomai.com/pub/ci/alpine
+RUN set -eux && sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
 
 RUN apk update --no-cache && apk add --no-cache ca-certificates tzdata
 ENV TZ Asia/Shanghai
@@ -37,7 +43,7 @@ COPY --from=builder /app/etc /app/etc{{end}}
 {{if .HasPort}}
 EXPOSE {{.Port}}
 {{end}}
-CMD ["./{{.ExeFile}}"{{.Argument}}]
+CMD ["./{{.ExeFile}}"]
 `
 )
 
