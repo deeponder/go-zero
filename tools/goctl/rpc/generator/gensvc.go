@@ -16,11 +16,13 @@ import {{.imports}}
 
 type ServiceContext struct {
 	Config config.Config
+	DynamicConfig config.DynamicConfig
 }
 
-func NewServiceContext(c config.Config) *ServiceContext {
+func NewServiceContext(c config.Config, dc config.DynamicConfig) *ServiceContext {
 	return &ServiceContext{
 		Config:c,
+		DynamicConfig: dc,
 	}
 }
 `

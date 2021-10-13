@@ -20,6 +20,20 @@ type (
 		PrivateKeys []PrivateKeyConf
 	}
 
+	NacosConf struct {
+		UseNacos bool `json:",default=false"`
+		Ip       string
+		Port     uint64
+
+		TimeoutMs           uint64 `json:",default=5000"`
+		NotLoadCacheAtStart bool   `json:",default=true"`
+		LogDir              string `json:",default="`
+		CacheDir            string `json:",default=/tmp/nacos/cache"`
+		RotateTime          string `json:",default=1h"`
+		MaxAge              int64  `json:",default=3"`
+		LogLevel            string `json:",default=debug"`
+	}
+
 	// A RestConf is a http service config.
 	// Why not name it as Conf, because we need to consider usage like:
 	//  type Config struct {
@@ -40,5 +54,6 @@ type (
 		Timeout      int64         `json:",default=3000"`
 		CpuThreshold int64         `json:",default=900,range=[0:1000]"`
 		Signature    SignatureConf `json:",optional"`
+		NacosConf    NacosConf     `json:",optional"`
 	}
 )

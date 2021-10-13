@@ -20,6 +20,10 @@ type Config struct {
 	rest.RestConf
 	{{.auth}}
 }
+
+type DynamicConfig struct {
+
+}
 `
 
 	jwtTemplate = ` struct {

@@ -21,12 +21,14 @@ import (
 
 type ServiceContext struct {
 	Config {{.config}}
+	DynamicConfig {{.dconfig}}
 	{{.middleware}}
 }
 
-func NewServiceContext(c {{.config}}) *ServiceContext {
+func NewServiceContext(c {{.config}}, dc {{.dconfig}}) *ServiceContext {
 	return &ServiceContext{
-		Config: c, 
+		Config: c,
+		DynamicConfig: dc,
 		{{.middlewareAssignment}}
 	}
 }
@@ -73,6 +75,7 @@ func genServiceContext(dir, rootPkg string, cfg *config.Config, api *spec.ApiSpe
 		data: map[string]string{
 			"configImport":         configImport,
 			"config":               "config.Config",
+			"dconfig":              "config.DynamicConfig",
 			"middleware":           middlewareStr,
 			"middlewareAssignment": middlewareAssignment,
 		},
