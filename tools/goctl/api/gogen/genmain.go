@@ -32,12 +32,18 @@ var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file"
 func main() {
 	flag.Parse()
 
-	var c config.Config
-	var dc config.DynamicConfig
+	var (
+		c config.Config
+		dc config.DynamicConfig
+	)
+	
+	ctx := svc.NewServiceContext(c, dc)
+
 	if env := os.Getenv("ENV"); env != "" {
 		*configFile = "etc/{{.serviceName}}-" + env + ".yaml"
 	}
 	conf.MustLoad(*configFile, &c)
+	ctx.Config = c
 
 	// use nacos
 	if c.NacosConf.UseNacos {
@@ -87,27 +93,24 @@ func main() {
 		if err = conf.LoadConfigFromYamlBytes([]byte(content), &dc); err != nil {
 			log.Fatal(err)
 		}
-	}
-	ctx := svc.NewServiceContext(c, dc)
-
-	// listen nacos conf change
-	if c.NacosConf.UseNacos {
+		ctx.DynamicConfig = dc
+		
+		// listen nacos conf change
 		err = client.ListenConfig(vo.ConfigParam{
 			DataId: "{{.serviceName}}.yaml",
 			Group:  "DEFAULT_GROUP",
 			OnChange: func(namespace, group, dataId, data string) {
 				var newConf config.DynamicConfig
-				if err = conf.LoadConfigFromYamlBytes([]byte(content), &newConf); err != nil {
+				if err = conf.LoadConfigFromYamlBytes([]byte(data), &newConf); err != nil {
 					logx.Errorf("update dynamic conf err:%s", err.Error())
 					return
 				}
-	
+
 				ctx.DynamicConfig = newConf
 			},
 		})
 	}
 
-	ctx := svc.NewServiceContext(c)
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
 

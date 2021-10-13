@@ -37,12 +37,18 @@ var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file"
 func main() {
 	flag.Parse()
 
-	var c config.Config
-	var dc config.DynamicConfig
+	var (
+		c config.Config
+		dc config.DynamicConfig
+	)
+	ctx := svc.NewServiceContext(c, dc)
+
 	if env := os.Getenv("ENV"); env != "" {
 		*configFile = "etc/{{.serviceName}}-" + env + ".yaml"
 	}
 	conf.MustLoad(*configFile, &c)
+	ctx.Config = c
+
 	// use nacos
 	if c.NacosConf.UseNacos {
 		// server conf
@@ -91,25 +97,24 @@ func main() {
 		if err = conf.LoadConfigFromYamlBytes([]byte(content), &dc); err != nil {
 			log.Fatal(err)
 		}
-	}
-	ctx := svc.NewServiceContext(c, dc)
+		ctx.DynamicConfig = dc
 
-	// listen nacos conf change
-	if c.NacosConf.UseNacos {
+		// listen nacos conf change
 		err = client.ListenConfig(vo.ConfigParam{
 			DataId: "{{.serviceName}}.yaml",
 			Group:  "DEFAULT_GROUP",
 			OnChange: func(namespace, group, dataId, data string) {
 				var newConf config.DynamicConfig
-				if err = conf.LoadConfigFromYamlBytes([]byte(content), &newConf); err != nil {
+				if err = conf.LoadConfigFromYamlBytes([]byte(data), &newConf); err != nil {
 					logx.Errorf("update dynamic conf err:%s", err.Error())
 					return
 				}
-	
+
 				ctx.DynamicConfig = newConf
 			},
 		})
 	}
+
 	srv := server.New{{.serviceNew}}Server(ctx)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {

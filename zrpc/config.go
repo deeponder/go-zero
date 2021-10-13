@@ -14,7 +14,7 @@ type (
 
 		TimeoutMs           uint64 `json:",default=5000"`
 		NotLoadCacheAtStart bool   `json:",default=true"`
-		LogDir              string `json:",default="`
+		LogDir              string `json:",default=/tmp/nacos/log"`
 		CacheDir            string `json:",default=/tmp/nacos/cache"`
 		RotateTime          string `json:",default=1h"`
 		MaxAge              int64  `json:",default=3"`
