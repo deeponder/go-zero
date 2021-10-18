@@ -19,9 +19,6 @@ type Config struct {
 	zrpc.RpcServerConf
 }
 
-type DynamicConfig struct {
-
-}
 `
 
 // GenConfig generates the configuration structure definition file of the rpc service,

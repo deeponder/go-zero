@@ -39,15 +39,13 @@ func main() {
 
 	var (
 		c config.Config
-		dc config.DynamicConfig
 	)
-	ctx := svc.NewServiceContext(c, dc)
+	ctx := svc.NewServiceContext(c)
 
 	if env := os.Getenv("ENV"); env != "" {
 		*configFile = "etc/{{.serviceName}}-" + env + ".yaml"
 	}
 	conf.MustLoad(*configFile, &c)
-	ctx.Config = c
 
 	// use nacos
 	if c.NacosConf.UseNacos {
@@ -94,26 +92,26 @@ func main() {
 			log.Fatal(err)
 		}
 
-		if err = conf.LoadConfigFromYamlBytes([]byte(content), &dc); err != nil {
+		if err = conf.LoadConfigFromYamlBytes([]byte(content), &c); err != nil {
 			log.Fatal(err)
 		}
-		ctx.DynamicConfig = dc
 
 		// listen nacos conf change
 		err = client.ListenConfig(vo.ConfigParam{
 			DataId: "{{.serviceName}}.yaml",
 			Group:  "DEFAULT_GROUP",
 			OnChange: func(namespace, group, dataId, data string) {
-				var newConf config.DynamicConfig
-				if err = conf.LoadConfigFromYamlBytes([]byte(data), &newConf); err != nil {
+				if err = conf.LoadConfigFromYamlBytes([]byte(data), &c); err != nil {
 					logx.Errorf("update dynamic conf err:%s", err.Error())
 					return
 				}
 
-				ctx.DynamicConfig = newConf
+				ctx.Config = c
 			},
 		})
 	}
+
+	ctx.Config = c
 
 	srv := server.New{{.serviceNew}}Server(ctx)
 

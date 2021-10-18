@@ -21,9 +21,6 @@ type Config struct {
 	{{.auth}}
 }
 
-type DynamicConfig struct {
-
-}
 `
 
 	jwtTemplate = ` struct {
