@@ -7,6 +7,20 @@ import (
 )
 
 type (
+	NacosConf struct {
+		UseNacos bool `json:",default=false"`
+		Ip       string
+		Port     uint64
+
+		TimeoutMs           uint64 `json:",default=5000"`
+		NotLoadCacheAtStart bool   `json:",default=true"`
+		LogDir              string `json:",default=/tmp/nacos/log"`
+		CacheDir            string `json:",default=/tmp/nacos/cache"`
+		RotateTime          string `json:",default=1h"`
+		MaxAge              int64  `json:",default=3"`
+		LogLevel            string `json:",default=debug"`
+	}
+
 	// A RpcServerConf is a rpc server config.
 	RpcServerConf struct {
 		service.ServiceConf
@@ -16,8 +30,9 @@ type (
 		Redis         redis.RedisKeyConf `json:",optional"`
 		StrictControl bool               `json:",optional"`
 		// setting 0 means no timeout
-		Timeout      int64 `json:",default=2000"`
-		CpuThreshold int64 `json:",default=900,range=[0:1000]"`
+		Timeout      int64     `json:",default=2000"`
+		CpuThreshold int64     `json:",default=900,range=[0:1000]"`
+		NacosConf    NacosConf `json:",optional"`
 	}
 
 	// A RpcClientConf is a rpc client config.
