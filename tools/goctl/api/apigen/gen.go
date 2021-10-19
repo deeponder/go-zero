@@ -36,6 +36,9 @@ service {{.serviceName}} {
 
 	@handler CreateUser // TODO: set handler name and delete this comment
 	post /users/create(request)
+
+	@handler HealthCheck // service health check
+	get /health returns()
 }
 `
 

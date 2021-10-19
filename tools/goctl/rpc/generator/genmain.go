@@ -25,8 +25,10 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/clients"
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
+	"google.golang.org/grpc/health"
+	healthgrpc "google.golang.org/grpc/health/grpc_health_v1"
+
 	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
-	
 	"gitlab.deepwisdomai.com/infra/go-zero/core/conf"
 	"gitlab.deepwisdomai.com/infra/go-zero/zrpc"
 	"google.golang.org/grpc"
@@ -117,6 +119,7 @@ func main() {
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
 		{{.pkg}}.Register{{.service}}Server(grpcServer, srv)
+		healthgrpc.RegisterHealthServer(grpcServer, health.NewServer())
 	})
 	defer s.Stop()
 
