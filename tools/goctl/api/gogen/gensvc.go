@@ -24,7 +24,7 @@ type ServiceContext struct {
 	{{.middleware}}
 }
 
-func NewServiceContext(c {{.config}}, dc {{.dconfig}}) *ServiceContext {
+func NewServiceContext(c {{.config}}) *ServiceContext {
 	return &ServiceContext{
 		Config: c,
 		{{.middlewareAssignment}}

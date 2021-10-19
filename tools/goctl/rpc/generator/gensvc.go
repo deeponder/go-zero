@@ -18,7 +18,7 @@ type ServiceContext struct {
 	Config config.Config
 }
 
-func NewServiceContext(c config.Config, dc config.DynamicConfig) *ServiceContext {
+func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:c,
 	}
