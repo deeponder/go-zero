@@ -8,8 +8,9 @@ import (
 func TestMessageWrapper_Send(t *testing.T) {
 	conf := ClientConfig{
 		Service:     "rmq-test",
-		NameServers: []string{"xxx.com"},
-		Topic:       "topic-test",
+		NameServers: []string{"192.168.50.41:9876"},
+		Topic:       "ablogs",
+		Group:       "ab",
 	}
 
 	err := InitRmq("rmq-test", conf)
@@ -23,8 +24,8 @@ func TestMessageWrapper_Send(t *testing.T) {
 
 	msg := messageWrapper{
 		msg: &primitive.Message{
-			Topic: "test",
-			Body:  []byte("Hello RocketMQ Go Client!"),
+			Topic: "ablogs",
+			Body:  []byte("Hello RocketMQ, From go-zero"),
 		},
 		client: rmqServices["rmq-test"],
 	}

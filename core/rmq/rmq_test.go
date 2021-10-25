@@ -14,8 +14,9 @@ func cb(msg Message) error {
 func TestStartConsumer(t *testing.T) {
 	conf := ClientConfig{
 		Service:     "rmq-test",
-		NameServers: []string{"xxx.com"},
-		Topic:       "rmq-test",
+		NameServers: []string{"192.168.50.41:9876"},
+		Topic:       "ablogs",
+		Group:       "ab",
 	}
 
 	err := InitRmq("rmq-test", conf)
