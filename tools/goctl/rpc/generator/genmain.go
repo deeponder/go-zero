@@ -17,9 +17,18 @@ const mainTemplate = `package main
 import (
 	"flag"
 	"fmt"
+	"os"
+	"log"
 
 	{{.imports}}
 
+	"github.com/nacos-group/nacos-sdk-go/clients"
+	"github.com/nacos-group/nacos-sdk-go/common/constant"
+	"github.com/nacos-group/nacos-sdk-go/vo"
+	"google.golang.org/grpc/health"
+	healthgrpc "google.golang.org/grpc/health/grpc_health_v1"
+
+	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
 	"gitlab.deepwisdomai.com/infra/go-zero/core/conf"
 	"gitlab.deepwisdomai.com/infra/go-zero/zrpc"
 	"google.golang.org/grpc"
@@ -30,13 +39,87 @@ var configFile = flag.String("f", "etc/{{.serviceName}}.yaml", "the config file"
 func main() {
 	flag.Parse()
 
-	var c config.Config
-	conf.MustLoad(*configFile, &c)
+	var (
+		c config.Config
+	)
 	ctx := svc.NewServiceContext(c)
+
+	if env := os.Getenv("ENV"); env != "" {
+		*configFile = "etc/{{.serviceName}}-" + env + ".yaml"
+	}
+	conf.MustLoad(*configFile, &c)
+
+	// use nacos
+	if c.NacosConf.UseNacos {
+		// server conf
+		sc := []constant.ServerConfig{
+			{
+				IpAddr: c.NacosConf.Ip,
+				Port:   c.NacosConf.Port,
+			},
+		}
+
+		// client conf
+		cc := constant.ClientConfig{
+			NamespaceId:         os.Getenv("ENV"), //namespace id
+			TimeoutMs:           c.NacosConf.TimeoutMs,
+			NotLoadCacheAtStart: c.NacosConf.NotLoadCacheAtStart,
+			LogDir:              c.NacosConf.LogDir,
+			CacheDir:            c.NacosConf.CacheDir,
+			RotateTime:          c.NacosConf.RotateTime,
+			MaxAge:              c.NacosConf.MaxAge,
+			LogLevel:            c.NacosConf.LogLevel,
+		}
+
+		// init client
+		client, err := clients.NewConfigClient(
+			vo.NacosClientParam{
+				ClientConfig:  &cc,
+				ServerConfigs: sc,
+			},
+		)
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+
+		// get config
+		content, err := client.GetConfig(vo.ConfigParam{
+			DataId: "{{.serviceName}}.yaml",  //配置文件名
+			Group:  "DEFAULT_GROUP",  //默认group
+		})
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if err = conf.LoadConfigFromYamlBytes([]byte(content), &c); err != nil {
+			log.Fatal(err)
+		}
+
+		// listen nacos conf change
+		err = client.ListenConfig(vo.ConfigParam{
+			DataId: "{{.serviceName}}.yaml",
+			Group:  "DEFAULT_GROUP",
+			OnChange: func(namespace, group, dataId, data string) {
+				if err = conf.LoadConfigFromYamlBytes([]byte(data), &c); err != nil {
+					logx.Errorf("update dynamic conf err:%s", err.Error())
+					return
+				}
+
+				ctx.Config = c
+			},
+		})
+	}
+
+	ctx.Config = c
+
 	srv := server.New{{.serviceNew}}Server(ctx)
 
 	s := zrpc.MustNewServer(c.RpcServerConf, func(grpcServer *grpc.Server) {
 		{{.pkg}}.Register{{.service}}Server(grpcServer, srv)
+		healthgrpc.RegisterHealthServer(grpcServer, health.NewServer())
 	})
 	defer s.Stop()
 

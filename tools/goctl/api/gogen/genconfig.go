@@ -20,6 +20,7 @@ type Config struct {
 	rest.RestConf
 	{{.auth}}
 }
+
 `
 
 	jwtTemplate = ` struct {
