@@ -23,6 +23,7 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/common/constant"
 	"github.com/nacos-group/nacos-sdk-go/vo"
 	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/trace"
 	
 	{{.importPackages}}
 )
@@ -112,6 +113,7 @@ func main() {
 	server := rest.MustNewServer(c.RestConf)
 	defer server.Stop()
 
+	server.Use(trace.InjectTracing())
 	handler.RegisterHandlers(server, ctx)
 
 	fmt.Printf("Starting server at %s:%d...\n", c.Host, c.Port)
