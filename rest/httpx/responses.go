@@ -2,9 +2,11 @@ package httpx
 
 import (
 	"encoding/json"
-	"github.com/pkg/errors"
 	"net/http"
 	"sync"
+
+	"github.com/pkg/errors"
+	"gitlab.deepwisdomai.com/infra/go-zero/core/errorx"
 
 	"gitlab.deepwisdomai.com/infra/go-zero/core/logx"
 )
@@ -32,7 +34,7 @@ func Error(w http.ResponseWriter, err error) {
 		return
 	}
 
-	code, body := errorHandler(err)
+	code, body := handler(err)
 	e, ok := body.(error)
 	if ok {
 		http.Error(w, e.Error(), code)
@@ -95,4 +97,15 @@ func WriteJson(w http.ResponseWriter, code int, v interface{}) {
 	} else if n < len(bs) {
 		logx.Errorf("actual bytes: %d, written bytes: %d", len(bs), n)
 	}
+}
+
+func FailJsonWithCode(w http.ResponseWriter, err error) {
+	code := 0
+	if cErr, ok := err.(errorx.IError); ok {
+		code = cErr.GetCode()
+	}
+	WriteJson(w, http.StatusOK, map[string]interface{}{
+		"code":    code,
+		"message": err.Error(),
+	})
 }
