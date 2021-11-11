@@ -7,8 +7,9 @@ import (
 )
 
 type ErrorJson struct {
-	ErrNo  int
-	ErrMsg string
+	StatusCode int
+	ErrNo      int
+	ErrMsg     string
 }
 
 func NewBaseError(code int, message string) *ErrorJson {
