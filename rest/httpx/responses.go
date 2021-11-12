@@ -16,9 +16,9 @@ var (
 
 // default render
 type DefaultRender struct {
-	ErrNo  int         `json:"errNo"`
-	ErrMsg string      `json:"errMsg"`
-	Data   interface{} `json:"data"`
+	ErrorCode int         `json:"error_code"`
+	ErrorMsg  string      `json:"error_msg"`
+	Result    interface{} `json:"result"`
 }
 
 // Error writes err into w.
@@ -54,18 +54,27 @@ func OkJson(w http.ResponseWriter, v interface{}) {
 
 func FailJson(w http.ResponseWriter, err error) {
 	var renderJson DefaultRender
+	var statusCode int
 
 	switch errors.Cause(err).(type) {
 	case ErrorJson:
-		renderJson.ErrNo = errors.Cause(err).(ErrorJson).ErrNo
-		renderJson.ErrMsg = errors.Cause(err).(ErrorJson).ErrMsg
-		renderJson.Data = nil
+		renderJson.ErrorCode = errors.Cause(err).(ErrorJson).ErrNo
+		renderJson.ErrorMsg = errors.Cause(err).(ErrorJson).ErrMsg
+		renderJson.Result = nil
+
+		statusCode = errors.Cause(err).(ErrorJson).StatusCode
+		// 未赋值，默认赋值为500
+		if statusCode == 0 {
+			statusCode = http.StatusInternalServerError
+		}
 	default:
-		renderJson.ErrNo = -1
-		renderJson.ErrMsg = errors.Cause(err).Error()
-		renderJson.Data = nil
+		renderJson.ErrorCode = -1
+		renderJson.ErrorMsg = errors.Cause(err).Error()
+		renderJson.Result = nil
+
+		statusCode = http.StatusInternalServerError
 	}
-	WriteJson(w, http.StatusOK, renderJson)
+	WriteJson(w, statusCode, renderJson)
 
 	// 打印错误栈
 	//StackLogger(ctx, err)

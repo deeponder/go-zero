@@ -29,11 +29,11 @@ func {{.HandlerName}}(ctx *svc.ServiceContext) http.HandlerFunc {
 		}{{end}}
 
 		l := logic.New{{.LogicType}}(r.Context(), ctx)
-		{{if .HasResp}}resp, {{end}}err := l.{{.Call}}({{if .HasRequest}}req{{end}})
+		resp, err := l.{{.Call}}({{if .HasRequest}}req{{end}})
 		if err != nil {
 			httpx.FailJson(w, err)
 		} else {
-			{{if .HasResp}}httpx.OkJson(w, resp){{else}}httpx.Ok(w){{end}}
+			httpx.OkJson(w, resp)
 		}
 	}
 }
