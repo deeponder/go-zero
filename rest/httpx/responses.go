@@ -63,12 +63,16 @@ func FailJson(w http.ResponseWriter, err error) {
 		renderJson.Result = nil
 
 		statusCode = errors.Cause(err).(ErrorJson).StatusCode
+		// 未赋值，默认赋值为500
+		if statusCode == 0 {
+			statusCode = http.StatusInternalServerError
+		}
 	default:
 		renderJson.ErrorCode = -1
 		renderJson.ErrorMsg = errors.Cause(err).Error()
 		renderJson.Result = nil
 
-		statusCode = http.StatusOK
+		statusCode = http.StatusInternalServerError
 	}
 	WriteJson(w, statusCode, renderJson)
 

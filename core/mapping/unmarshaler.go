@@ -345,7 +345,7 @@ func (u *Unmarshaler) processNamedFieldWithValue(field reflect.StructField, valu
 
 	fieldKind := Deref(field.Type).Kind()
 	switch fieldKind {
-	case reflect.Array, reflect.Map, reflect.Slice, reflect.Struct:
+	case reflect.Array, reflect.Map, reflect.Slice, reflect.Struct, reflect.Interface:
 		return u.processFieldNotFromString(field, value, mapValue, opts, fullName)
 	default:
 		if u.opts.fromString || opts.fromString() {
