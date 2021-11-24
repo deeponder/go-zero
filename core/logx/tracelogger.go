@@ -62,8 +62,8 @@ func (l *traceLogger) write(writer io.Writer, level, content string) {
 	l.Timestamp = getTimestamp()
 	l.Level = level
 	l.Content = content
-	l.Trace = traceIdFromContext(l.ctx)
-	l.Span = spanIdFromContext(l.ctx)
+	l.Trace = traceIdFromIstio(l.ctx)
+	l.Span = spanIdFromIstio(l.ctx)
 	outputJson(writer, l)
 }
 
@@ -90,4 +90,22 @@ func traceIdFromContext(ctx context.Context) string {
 	}
 
 	return t.TraceId()
+}
+
+func spanIdFromIstio(ctx context.Context) string {
+	spanId, ok := ctx.Value("x-b3-traceid").(string)
+	if !ok {
+		return ""
+	}
+
+	return spanId
+}
+
+func traceIdFromIstio(ctx context.Context) string {
+	traceId, ok := ctx.Value("x-b3-spanid").(string)
+	if !ok {
+		return ""
+	}
+
+	return traceId
 }

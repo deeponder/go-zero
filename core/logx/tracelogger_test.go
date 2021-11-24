@@ -22,7 +22,8 @@ var mock tracespec.Trace = new(mockTrace)
 func TestTraceLog(t *testing.T) {
 	var buf mockWriter
 	atomic.StoreUint32(&initialized, 1)
-	ctx := context.WithValue(context.Background(), tracespec.TracingKey, mock)
+	ctx := context.WithValue(context.Background(), "x-b3-traceid", mockTraceID)
+	ctx = context.WithValue(ctx, "x-b3-spanid", mockSpanID)
 	WithContext(ctx).(*traceLogger).write(&buf, levelInfo, testlog)
 	assert.True(t, strings.Contains(buf.String(), mockTraceID))
 	assert.True(t, strings.Contains(buf.String(), mockSpanID))
@@ -32,7 +33,8 @@ func TestTraceError(t *testing.T) {
 	var buf mockWriter
 	atomic.StoreUint32(&initialized, 1)
 	errorLog = newLogWriter(log.New(&buf, "", flags))
-	ctx := context.WithValue(context.Background(), tracespec.TracingKey, mock)
+	ctx := context.WithValue(context.Background(), "x-b3-traceid", mockTraceID)
+	ctx = context.WithValue(ctx, "x-b3-spanid", mockSpanID)
 	l := WithContext(ctx).(*traceLogger)
 	SetLevel(InfoLevel)
 	l.WithDuration(time.Second).Error(testlog)
@@ -48,7 +50,8 @@ func TestTraceInfo(t *testing.T) {
 	var buf mockWriter
 	atomic.StoreUint32(&initialized, 1)
 	infoLog = newLogWriter(log.New(&buf, "", flags))
-	ctx := context.WithValue(context.Background(), tracespec.TracingKey, mock)
+	ctx := context.WithValue(context.Background(), "x-b3-traceid", mockTraceID)
+	ctx = context.WithValue(ctx, "x-b3-spanid", mockSpanID)
 	l := WithContext(ctx).(*traceLogger)
 	SetLevel(InfoLevel)
 	l.WithDuration(time.Second).Info(testlog)
@@ -64,7 +67,8 @@ func TestTraceSlow(t *testing.T) {
 	var buf mockWriter
 	atomic.StoreUint32(&initialized, 1)
 	slowLog = newLogWriter(log.New(&buf, "", flags))
-	ctx := context.WithValue(context.Background(), tracespec.TracingKey, mock)
+	ctx := context.WithValue(context.Background(), "x-b3-traceid", mockTraceID)
+	ctx = context.WithValue(ctx, "x-b3-spanid", mockSpanID)
 	l := WithContext(ctx).(*traceLogger)
 	SetLevel(InfoLevel)
 	l.WithDuration(time.Second).Slow(testlog)
