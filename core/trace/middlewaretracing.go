@@ -3,11 +3,10 @@ package trace
 import (
 	"net/http"
 
-	"gitlab.deepwisdomai.com/infra/go-zero/rest"
 	"google.golang.org/grpc/metadata"
 )
 
-func InjectTracing() rest.Middleware {
+func InjectTracing() func(next http.HandlerFunc) http.HandlerFunc {
 	return func(next http.HandlerFunc) http.HandlerFunc {
 		return func(w http.ResponseWriter, r *http.Request) {
 			md := metadata.Pairs(
